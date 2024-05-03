@@ -39,7 +39,6 @@ dependencies:
   google_fonts: ^6.2.1
   getwidget: ^4.0.0
   http: ^1.2.1
-  google_maps_flutter: ^2.6.1
   supabase_flutter: ^2.5.2
 
 dev_dependencies:
