@@ -19,31 +19,68 @@ class _MyHomePageState extends ConsumerState<MyHomePage> {
     return Scaffold(
       backgroundColor: const Color(0xffF2F2F2),
       appBar: AppBar(
-        title: const SizedBox(
-          height: 50,
-
-          // search bar
-          child: TextField(
-            decoration: InputDecoration(
-              contentPadding: EdgeInsets.all(10),
-              prefixIcon: Icon(
-                Icons.search,
-                color: Colors.grey,
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(60)),
-                borderSide: BorderSide(
-                  color: Colors.grey,
+        flexibleSpace: Image.asset(
+          'assets/appbg.jpg',
+          fit: BoxFit.cover,
+          color: Colors.black.withOpacity(0.5),
+          colorBlendMode: BlendMode.darken,
+        ),
+        forceMaterialTransparency: true,
+        title: Row(
+          children: [
+            Image.asset('assets/logobg.png', height: 50),
+            const Text('Nagpur', style: TextStyle(color: Colors.white)),
+            const Icon(Icons.arrow_drop_down, color: Colors.white, size: 30),
+          ],
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Coming soon'),
+                ),
+              );
+            },
+            icon: const Icon(
+              Icons.notifications,
+              color: Colors.white,
+              size: 30,
+            ),
+          ),
+        ],
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(60),
+          child: Container(
+            padding: const EdgeInsets.all(10),
+            child: const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
+                  contentPadding: EdgeInsets.symmetric(vertical: 0),
+                  prefixIcon: Icon(
+                    Icons.search,
+                    color: Colors.grey,
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(60)),
+                    borderSide: BorderSide(
+                      color: Colors.grey,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(60)),
+                    borderSide: BorderSide(color: Colors.grey),
+                  ),
+                  hintText: 'Search',
                 ),
               ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(60)),
-                borderSide: BorderSide(color: Colors.grey),
-              ),
-              hintText: 'Search',
             ),
           ),
         ),
+        scrolledUnderElevation: 10,
       ),
 
       // body

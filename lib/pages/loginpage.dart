@@ -16,20 +16,21 @@ class _LoginPageState extends State<LoginPage> {
   Widget buildTextField(String labelText, TextEditingController controller,
       String? Function(String?) validator,
       {bool obscureText = false}) {
-    return SizedBox(
-      height: 50,
-      child: TextFormField(
-        autovalidateMode: AutovalidateMode.onUserInteraction,
-        obscureText: obscureText,
-        controller: controller,
-        validator: validator,
-        style: const TextStyle(fontSize: 18),
-        decoration: InputDecoration(
-          contentPadding: const EdgeInsets.all(10),
-          labelText: labelText,
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10)),
-          ),
+    return TextFormField(
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      obscureText: obscureText,
+      controller: controller,
+      validator: validator,
+      style: const TextStyle(fontSize: 18),
+      decoration: InputDecoration(
+        errorBorder: const OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.red),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+        ),
+        contentPadding: const EdgeInsets.all(10),
+        labelText: labelText,
+        border: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
       ),
     );
@@ -103,7 +104,7 @@ class _LoginPageState extends State<LoginPage> {
 
                     // email textfield
                     buildTextField('Email', emailController, emailValidator),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 20),
 
                     // password textfield
                     buildTextField(
@@ -123,8 +124,8 @@ class _LoginPageState extends State<LoginPage> {
                         onPressed: () async {
                           // Signin Logic Here
                           Navigator.pushReplacementNamed(context, '/homepage');
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('SignIn Pressed')));
+                          // ScaffoldMessenger.of(context).showSnackBar(
+                          //     const SnackBar(content: Text('SignIn Pressed')));
                         },
                         child: const Text('Sign In',
                             style: TextStyle(
@@ -146,7 +147,8 @@ class _LoginPageState extends State<LoginPage> {
                             //signup logic here
                             ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
-                                    content: Text('SignUp Pressed')));
+                                    behavior: SnackBarBehavior.floating,
+                                    content: Text('Sign Up Pressed')));
                           },
                           child: const Text('Sign Up'),
                         ),
